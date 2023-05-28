@@ -1,10 +1,10 @@
 const pantalla = document.querySelector(".pantalla");
 const botones = document.querySelectorAll(".btn");
-
+var i=0
 botones.forEach(boton => {
     boton.addEventListener("click", () => {
         const botonApretado = boton.textContent;
-
+        let texto = pantalla.textContent
         if (boton.id === "c") {
             pantalla.textContent = "0";
             return;
@@ -22,6 +22,10 @@ botones.forEach(boton => {
         if (boton.id === "igual") {
             try {
                 pantalla.textContent = eval(pantalla.textContent);
+
+             //uso del localstorage
+               localStorage.setItem(`resultado_${i++}`,texto+' = '+ eval(pantalla.textContent))
+
             } catch {
                 pantalla.textContent = "Error!";
             }

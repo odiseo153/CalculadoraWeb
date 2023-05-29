@@ -1,5 +1,16 @@
 const pantalla = document.querySelector(".pantalla");
-const botones = document.querySelectorAll(".btn");
+const botones = document.querySelectorAll(".btns");
+const boton = document.getElementById('boton')
+const historial = document.getElementById('cuerpo')
+
+var fechaActual = new Date();
+var dia = fechaActual.getDate();
+var mes = fechaActual.getMonth() + 1; // Los meses comienzan desde 0, por lo que se agrega 1
+var año = fechaActual.getFullYear();
+var fecha = dia + "/" + mes + "/" + año
+
+
+
 var i=0
 botones.forEach(boton => {
     boton.addEventListener("click", () => {
@@ -25,7 +36,18 @@ botones.forEach(boton => {
 
              //uso del localstorage
                localStorage.setItem(`resultado_${i++}`,texto+' = '+ eval(pantalla.textContent))
+             
+                historial.innerHTML +=`
+  <tr>
+      <th scope="row">${i}</th>
+      <td>${texto}</td>
+      <td>${eval(pantalla.textContent)}</td>
+      <td>${fecha}</td>
+    </tr>
+`
 
+
+ 
             } catch {
                 pantalla.textContent = "Error!";
             }
@@ -39,3 +61,25 @@ botones.forEach(boton => {
         }
     })
 })
+
+
+
+boton.addEventListener('click',()=>
+{
+localStorage.clear()
+i=0
+historial.innerHTML = ''
+})
+
+
+
+
+
+
+
+
+
+
+
+
+

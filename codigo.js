@@ -9,7 +9,8 @@ var mes = fechaActual.getMonth() + 1; // Los meses comienzan desde 0, por lo que
 var año = fechaActual.getFullYear();
 var fecha = dia + "/" + mes + "/" + año
 
-
+var formato = fechaActual.getHours()>12?'pm':'am'
+var hora = fechaActual.getHours()+':'+fechaActual.getMinutes()+' '+formato
 
 var i=0
 botones.forEach(boton => {
@@ -43,6 +44,7 @@ botones.forEach(boton => {
       <td>${texto}</td>
       <td>${eval(pantalla.textContent)}</td>
       <td>${fecha}</td>
+      <td>${hora}</td>
     </tr>
 `
 
